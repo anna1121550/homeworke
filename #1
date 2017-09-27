@@ -1,0 +1,28 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        private static readonly int z;
+        private static readonly int t;
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите число, факториал которого необходимо получить");
+            string text = Console.ReadLine();
+            int z = Convert.ToInt32(text);
+            int t = 1;
+            for (int i = z; i >1; i--)
+            t = t * i;
+
+            Console.WriteLine("результат работы программы " + t);
+            Console.ReadKey();
+                
+        }
+    }
+}
