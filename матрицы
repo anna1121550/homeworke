@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string text = Console.ReadLine();
+            int x = int.Parse(text);
+            Random ra = new Random();
+            List<List<int>> mat1 = new List<List<int>>();
+            for(int i=0; i<x; i++)
+            {
+                List<int> q = new List<int>();
+                for (int j = 0; j < x; j++)
+                {
+                    q.Add(ra.Next(1,10));
+                }
+                mat1.Add(q);
+            }
+
+            List<List<int>> mat2 = new List<List<int>>();
+            for (int i = 0; i < x; i++)
+            {
+                List<int> q = new List<int>();
+                for (int j = 0; j < x; j++)
+                {
+                    q.Add(ra.Next(1, 10));
+                }
+                mat2.Add(q);
+            }
+
+            foreach (var q in mat1)
+                Console.WriteLine(q.Aggregate("", (e, n) => e + " " + n));
+
+            Console.WriteLine(Environment.NewLine);
+
+            foreach (var t in mat2)
+                Console.WriteLine(t.Aggregate("", (e, n) => e + " " + n));
+
+
+            List<List<int>> mat3 = new List<List<int>>();
+            for (int i = 0; i < x; i++)
+            {
+                List<int> q = new List<int>();
+                for (int j = 0; j < x; j++)
+                {
+                    q.Add(0);
+                }
+                mat3.Add(q);
+            }
+            for (int i = 0; i < x; i++)
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    {
+                        for (int w = 0; w < x; w++)
+                        {
+                            mat3[i][j] = mat3[i][j] + (mat1[i][w] * mat2[w][j]); 
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("Результат");
+            PrintValue(mat3);
+            Console.ReadKey();
+        }
+        private static void PrintValue(List<List<int>> mat1)
+        {
+            foreach (var z in mat1)
+                Console.WriteLine(z.Aggregate("", (e, q) => e + " " + q));
+        }
+    }
+}
